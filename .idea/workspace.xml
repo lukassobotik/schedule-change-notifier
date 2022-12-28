@@ -6,12 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="5d3a60c4-dcb4-40ab-a59f-8fa098b50347" name="Changes" comment="User can Subscribe and Unsubscribe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownDocumentLinksSafeState">
+    <allowed-protocols>
+      <protocol value="mailto" />
+    </allowed-protocols>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -62,7 +67,7 @@
       <workItem from="1672217767125" duration="1729000" />
       <workItem from="1672219511829" duration="5531000" />
       <workItem from="1672244424256" duration="882000" />
-      <workItem from="1672245317166" duration="9176000" />
+      <workItem from="1672245317166" duration="9893000" />
     </task>
     <task id="LOCAL-00001" summary="First Creation">
       <created>1672158890800</created>
@@ -92,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672258199329</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="User can Subscribe and Unsubscribe">
+      <created>1672259899318</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672259899318</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
