@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d3a60c4-dcb4-40ab-a59f-8fa098b50347" name="Changes" comment="User can Subscribe and Unsubscribe">
+    <list default="true" id="5d3a60c4-dcb4-40ab-a59f-8fa098b50347" name="Changes" comment="How to Subscribe / Unsubscribe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -67,7 +67,7 @@
       <workItem from="1672217767125" duration="1729000" />
       <workItem from="1672219511829" duration="5531000" />
       <workItem from="1672244424256" duration="882000" />
-      <workItem from="1672245317166" duration="9893000" />
+      <workItem from="1672245317166" duration="12231000" />
     </task>
     <task id="LOCAL-00001" summary="First Creation">
       <created>1672158890800</created>
@@ -104,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672259899318</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="How to Subscribe / Unsubscribe">
+      <created>1672260628824</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1672260628824</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +134,7 @@
     <MESSAGE value="Readme Creation" />
     <MESSAGE value="Sending Emails" />
     <MESSAGE value="User can Subscribe and Unsubscribe" />
-    <option name="LAST_COMMIT_MESSAGE" value="User can Subscribe and Unsubscribe" />
+    <MESSAGE value="How to Subscribe / Unsubscribe" />
+    <option name="LAST_COMMIT_MESSAGE" value="How to Subscribe / Unsubscribe" />
   </component>
 </project>
