@@ -111,6 +111,7 @@ public class Main {
                 System.out.println("Sending email to " + recipient);
             }
 
+            // All of these you can change to whatever you want
             message.setSubject("Rozvrh na VŠEM se změnil");
             StringBuilder html = new StringBuilder();
             html.append("<html><body><h1>Rozvrh na VŠEM se změnil</h1><p>Nový rozvrh je na adrese: <a href=\"").append(getUrl()).append("\">").append(getUrl()).append("</a></p><p>Nový rozvrh:</p>");
@@ -134,6 +135,7 @@ public class Main {
         ArrayList<String> tables = new ArrayList<>();
         try {
             doc = Jsoup.connect(getUrl()).get();
+            // You may need to change the selector to match your page
             Elements newsHeadlines = doc.select("table");
             for (Element headline : newsHeadlines) {
                 tables.add(headline.text());
@@ -145,6 +147,8 @@ public class Main {
         return tables;
     }
 
+    // You may need to change this to match your page
+    // It checks if a page with the next month exists, if it does, it returns the url of that page, otherwise it returns the url of the current month
     public static String getUrl() {
         var url = "https://www.akademievsem.cz/rozvrh-akademie-vsem-" + getMonth(true) + ".html";
 
@@ -156,6 +160,7 @@ public class Main {
         return url;
     }
 
+    // You may not need this if you don't have a page with the next month's schedule
     public static String getMonth(boolean plusOne) {
         String s = "";
         Month month;
