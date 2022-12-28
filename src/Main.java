@@ -1,18 +1,25 @@
+import io.github.cdimascio.dotenv.Dotenv;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Main {
+    static ArrayList<String> HTMLTables = new ArrayList<>();
+    static ArrayList<String> recipients = new ArrayList<>();
+
+    static Dotenv dotenv = Dotenv.load();
+
     public static void main(String[] args) {
-        int period = 3600000;
+//        int period = 3600000; // 1 hour
+        int period = 10000;
         Timer timer = new Timer();
 
         final ArrayList<String>[] newData = new ArrayList[]{new ArrayList<>()};
@@ -30,12 +37,58 @@ public class Main {
 
                 if (newData[0].equals(oldData[0])) {
                     System.out.println("No change");
-                } else{
+                } else {
                     System.out.println("Change detected");
                     oldData[0] = newData[0];
+                    try {
+                        sendEmail();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }, 0, period);
+    }
+
+    public static void sendEmail() throws IOException {
+        String from = dotenv.get("FROM_EMAIL");
+        String host = dotenv.get("SMTP_HOST");
+
+        Properties properties = System.getProperties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", dotenv.get("SMTP_PORT"));
+        properties.put("mail.smtp.ssl.enable", "false");
+        properties.put("mail.smtp.auth", "true");
+
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator(){
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, dotenv.get("PASSWORD"));
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+
+            for (String recipient : recipients) {
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+                System.out.println("Sending email to " + recipient);
+            }
+
+            message.setSubject("Rozvrh na VŠEM se změnil");
+            StringBuilder html = new StringBuilder();
+            html.append("<html><body><h1>Rozvrh na VŠEM se změnil</h1><p>Nový rozvrh je na adrese: <a href=\"").append(getUrl()).append("\">").append(getUrl()).append("</a></p><p>Nový rozvrh:</p>");
+            for (String table : HTMLTables) {
+                if (table.contains("<tr class=\"row_0 row_first even\">") || table.contains("Ekonomika")) continue;
+                html.append(table);
+            }
+
+            message.setContent(html.toString(), "text/html; charset=UTF-8");
+
+            Transport.send(message);
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
     }
 
     public static ArrayList<String> FetchData() {
@@ -46,6 +99,7 @@ public class Main {
             Elements newsHeadlines = doc.select("table");
             for (Element headline : newsHeadlines) {
                 tables.add(headline.text());
+                HTMLTables.add(headline.html());
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
