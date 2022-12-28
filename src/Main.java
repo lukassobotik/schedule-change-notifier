@@ -13,13 +13,12 @@ import java.util.*;
 
 public class Main {
     static ArrayList<String> HTMLTables = new ArrayList<>();
-    static ArrayList<String> recipients = new ArrayList<>();
+    static Set<String> recipients = new HashSet<>();
 
     static Dotenv dotenv = Dotenv.load();
 
     public static void main(String[] args) {
-//        int period = 3600000; // 1 hour
-        int period = 10000;
+        int period = 3600000; // 1 hour
         Timer timer = new Timer();
 
         final ArrayList<String>[] newData = new ArrayList[]{new ArrayList<>()};
@@ -41,13 +40,45 @@ public class Main {
                     System.out.println("Change detected");
                     oldData[0] = newData[0];
                     try {
+                        getRecipients();
                         sendEmail();
-                    } catch (IOException e) {
+                    } catch (IOException | MessagingException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
         }, 0, period);
+    }
+
+    public static void getRecipients() throws MessagingException, IOException {
+        Properties properties = System.getProperties();
+        properties.put("mail.pop3.host", dotenv.get("POP_HOST"));
+        properties.put("mail.pop3.port", dotenv.get("POP_PORT"));
+        properties.put("mail.pop3.ssl.enable", "false");
+        properties.put("mail.pop3.auth", "true");
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator(){
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(dotenv.get("FROM_EMAIL"), dotenv.get("PASSWORD"));
+            }
+        });
+        Store store = session.getStore("pop3");
+
+        store.connect(dotenv.get("HOST"), dotenv.get("FROM_EMAIL"), dotenv.get("PASSWORD"));
+
+        Folder emailFolder = store.getFolder("INBOX");
+        emailFolder.open(Folder.READ_ONLY);
+        System.out.println("Total Messages:" + emailFolder.getMessageCount());
+        System.out.println(Arrays.toString(emailFolder.getMessages()));
+        for (Message message : emailFolder.getMessages()) {
+            System.out.println("---------------------------------");
+            System.out.println("Subject: " + message.getSubject());
+            System.out.println("From: " + message.getFrom()[0]);
+            if (message.getSubject().trim().equalsIgnoreCase("subscribe")) {
+                recipients.add(message.getFrom()[0].toString().split("<")[1].split(">")[0].trim());
+            } else if (message.getSubject().trim().equalsIgnoreCase("unsubscribe")) {
+                recipients.remove(message.getFrom()[0].toString().split("<")[1].split(">")[0].trim());
+            }
+        }
     }
 
     public static void sendEmail() throws IOException {
@@ -67,6 +98,11 @@ public class Main {
         });
 
         try {
+            if (recipients.size() == 0) {
+                System.out.println("No recipients");
+                return;
+            }
+
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
 
@@ -86,6 +122,8 @@ public class Main {
             message.setContent(html.toString(), "text/html; charset=UTF-8");
 
             Transport.send(message);
+
+            System.out.println("Sent messages successfully...");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }
