@@ -6,7 +6,7 @@ The script will be running on a server, and the email will be sent to the email 
 
 ## How to use
 The script will email the schedule to the email address you send the email from. So send the email from the email address you want to receive the schedule at. But don't worry, the script will not send any other emails to that address.
-### How to Subscribe
-[**Email**](mailto:info@vsemschedulechangenotifier.tech) `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service.
-### How to Unsubscribe
-[**Email**](mailto:info@vsemschedulechangenotifier.tech) `info@vsemschedulechangenotifier.tech` with the subject `unsubscribe` to **unsubscribe** from the service.
+
+[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service.
+
+[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `unsubscribe` to **unsubscribe** from the service.
