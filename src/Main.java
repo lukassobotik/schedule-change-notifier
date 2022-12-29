@@ -30,12 +30,6 @@ public class Main {
                 // Avoid the first run saying data changed
                 if (Objects.equals(oldData[0], new ArrayList<>())) {
                     System.out.println("First run, no data to compare");
-                    try {
-                        getRecipients();
-                        sendEmail();
-                    } catch (IOException | MessagingException e) {
-                        System.out.println("\033[0;31m" + "Error sending email:" + "\n" + e + "\033[0m");
-                    }
                     oldData[0] = newData[0];
                     return;
                 }
@@ -122,7 +116,9 @@ public class Main {
             StringBuilder html = new StringBuilder();
             html.append("<html><body><h1>Rozvrh na VŠEM se změnil</h1><p>Nový rozvrh je na adrese: <a href=\"").append(getUrl()).append("\">").append(getUrl()).append("</a></p><p>Nový rozvrh:</p>");
             for (String table : HTMLTables) {
+                // This is to remove the unnecessary tables
                 if (table.contains("<tr class=\"row_0 row_first even\">") || table.contains("Ekonomika")) continue;
+
                 html.append(table);
             }
 
