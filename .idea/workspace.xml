@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d3a60c4-dcb4-40ab-a59f-8fa098b50347" name="Changes" comment="How to Run the Script Yourself">
+    <list default="true" id="5d3a60c4-dcb4-40ab-a59f-8fa098b50347" name="Changes" comment="Code explanations if someone wants to modify it to their needs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vsem-schedule-change-notifier.iml" beforeDir="false" afterPath="$PROJECT_DIR$/vsem-schedule-change-notifier.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +32,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/lukas/Downloads/activation-1.1.1.jar",
+    "last_opened_file_path": "/home/lukas/IdeaProjects/vsem-schedule-change-notifier/out/artifacts/vsem_schedule_change_notifier_jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -44,6 +46,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/out/artifacts/vsem_schedule_change_notifier_jar" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -67,7 +74,9 @@
       <workItem from="1672217767125" duration="1729000" />
       <workItem from="1672219511829" duration="5531000" />
       <workItem from="1672244424256" duration="882000" />
-      <workItem from="1672245317166" duration="12924000" />
+      <workItem from="1672245317166" duration="13460000" />
+      <workItem from="1672311041711" duration="2023000" />
+      <workItem from="1672313309234" duration="3820000" />
     </task>
     <task id="LOCAL-00001" summary="First Creation">
       <created>1672158890800</created>
@@ -118,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672262983090</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Code explanations if someone wants to modify it to their needs">
+      <created>1672263685290</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672263685290</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +159,7 @@
     <MESSAGE value="User can Subscribe and Unsubscribe" />
     <MESSAGE value="How to Subscribe / Unsubscribe" />
     <MESSAGE value="How to Run the Script Yourself" />
-    <option name="LAST_COMMIT_MESSAGE" value="How to Run the Script Yourself" />
+    <MESSAGE value="Code explanations if someone wants to modify it to their needs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code explanations if someone wants to modify it to their needs" />
   </component>
 </project>

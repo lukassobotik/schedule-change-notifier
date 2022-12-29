@@ -29,7 +29,13 @@ public class Main {
 
                 // Avoid the first run saying data changed
                 if (Objects.equals(oldData[0], new ArrayList<>())) {
-                    System.out.println("No change");
+                    System.out.println("First run, no data to compare");
+                    try {
+                        getRecipients();
+                        sendEmail();
+                    } catch (IOException | MessagingException e) {
+                        System.out.println("\033[0;31m" + "Error sending email:" + "\n" + e + "\033[0m");
+                    }
                     oldData[0] = newData[0];
                     return;
                 }
@@ -43,7 +49,7 @@ public class Main {
                         getRecipients();
                         sendEmail();
                     } catch (IOException | MessagingException e) {
-                        throw new RuntimeException(e);
+                        System.out.println("\033[0;31m" + "Error sending email:" + "\n" + e + "\033[0m");
                     }
                 }
             }
@@ -142,7 +148,7 @@ public class Main {
                 HTMLTables.add(headline.html());
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("\033[0;31m" + "Error fetching data:" + "\n" + e + "\033[0m");
         }
         return tables;
     }
