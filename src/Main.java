@@ -30,7 +30,7 @@ public class Main {
 
         // Avoid the first run saying data changed
         if (Objects.equals(oldData, null)) {
-            System.out.println("First run, no data to compare");
+            Logger.log("First run, no data to compare");
             try {
                 saveToFile(newData);
             } catch (IOException e) {
@@ -39,10 +39,11 @@ public class Main {
             return;
         }
 
+        // Change Detection
         if (newData.equals(oldData)) {
-            System.out.println("No change");
+            Logger.log("No change");
         } else {
-            System.out.println("Change detected");
+            Logger.log("Change detected");
             try {
                 saveToFile(newData);
             } catch (IOException e) {
@@ -52,7 +53,7 @@ public class Main {
                 getRecipients();
                 sendEmail();
             } catch (IOException | MessagingException e) {
-                System.out.println("\033[0;31m" + "Error sending email:" + "\n" + e + "\033[0m");
+                Logger.log("Error sending email:" + e.getMessage(), true);
             }
         }
     }
@@ -69,7 +70,7 @@ public class Main {
         var file = new File("schedule.txt");
         if (!file.exists()) {
             var result = file.createNewFile();
-            System.out.println("File created: " + result);
+            Logger.log("File created: " + result);
             return null;
         }
 
@@ -78,7 +79,6 @@ public class Main {
         List<String> array = new ArrayList<>();
         while (scanner.hasNextLine()) {
             var line = scanner.nextLine();
-            System.out.println(line + "\n");
             array.add(line);
         }
 
@@ -103,12 +103,11 @@ public class Main {
 
         var emailFolder = store.getFolder("INBOX");
         emailFolder.open(Folder.READ_ONLY);
-        System.out.println("Total Messages:" + emailFolder.getMessageCount());
-        System.out.println(Arrays.toString(emailFolder.getMessages()));
+        Logger.log("Total Messages:" + emailFolder.getMessageCount());
         for (Message message : emailFolder.getMessages()) {
-            System.out.println("---------------------------------");
-            System.out.println("Subject: " + message.getSubject());
-            System.out.println("From: " + message.getFrom()[0]);
+            Logger.log("---------------------------------");
+            Logger.log("Subject: " + message.getSubject());
+            Logger.log("From: " + message.getFrom()[0]);
             if (message.getSubject().trim().equalsIgnoreCase("subscribe")) {
                 recipients.add(message.getFrom()[0].toString().split("<")[1].split(">")[0].trim());
             } else if (message.getSubject().trim().equalsIgnoreCase("unsubscribe")) {
@@ -135,7 +134,7 @@ public class Main {
 
         try {
             if (recipients.size() == 0) {
-                System.out.println("No recipients");
+                Logger.log("No recipients");
                 return;
             }
 
@@ -144,7 +143,7 @@ public class Main {
 
             for (String recipient : recipients) {
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-                System.out.println("Sending email to " + recipient);
+                Logger.log("Sending email to " + recipient);
             }
 
             // All of these you can change to whatever you want
@@ -177,7 +176,7 @@ public class Main {
                 HTMLTables.add(headline.html());
             }
         } catch (IOException e) {
-            System.out.println("\033[0;31m" + "Error fetching data:" + "\n" + e + "\033[0m");
+            Logger.log("Error fetching data: " + e.getMessage(), true);
         }
         return tables;
     }

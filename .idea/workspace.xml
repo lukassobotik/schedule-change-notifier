@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d3a60c4-dcb4-40ab-a59f-8fa098b50347" name="Changes" comment="Stopped Sending Testing Emails">
+      <change afterPath="$PROJECT_DIR$/src/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -18,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -56,7 +59,8 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "/home/lukas/IdeaProjects/vsem-schedule-change-notifier/out/artifacts/vsem_schedule_change_notifier_jar",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "/home/lukas/IdeaProjects/vsem-schedule-change-notifier",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -65,11 +69,13 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/out/artifacts/vsem_schedule_change_notifier_jar" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -106,6 +112,7 @@
       <workItem from="1672311041711" duration="2023000" />
       <workItem from="1672313309234" duration="7987000" />
       <workItem from="1672404170833" duration="5542000" />
+      <workItem from="1672422418134" duration="2451000" />
     </task>
     <task id="LOCAL-00001" summary="First Creation">
       <created>1672158890800</created>
@@ -195,6 +202,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
     <MESSAGE value="First Creation" />
     <MESSAGE value="Website Change Detection" />
     <MESSAGE value="Readme Creation" />

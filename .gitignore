@@ -1,5 +1,6 @@
 .env
 schedule.txt
+log.txt
 workspace.xml
 
 ### IntelliJ IDEA ###
