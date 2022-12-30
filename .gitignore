@@ -1,3 +1,7 @@
+.env
+schedule.txt
+workspace.xml
+
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
@@ -14,7 +18,6 @@ out/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
-.env
 
 ### NetBeans ###
 /nbproject/private/
