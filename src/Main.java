@@ -5,16 +5,13 @@ import org.jsoup.nodes.Element;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.Month;
 import java.util.*;
 
 public class Main {
     static List<String> HTMLTables = new ArrayList<>();
     static Set<String> recipients = new HashSet<>();
-
     static Dotenv dotenv = Dotenv.load();
 
     public static void main(String[] args) {
@@ -59,7 +56,7 @@ public class Main {
     }
 
     public static void saveToFile(List<String> array) throws IOException {
-        FileWriter fw = new FileWriter("schedule.txt");
+        FileWriter fw = new FileWriter(dotenv.get("LOG_DIRECTORY_PATH") + "schedule.txt");
         for (var el : array) {
             fw.write(el + "\n");
         }
@@ -67,14 +64,18 @@ public class Main {
     }
 
     public static List<String> readFile() throws IOException, ClassNotFoundException {
-        var file = new File("schedule.txt");
+        var file = new File(dotenv.get("LOG_DIRECTORY_PATH") + "schedule.txt");
         if (!file.exists()) {
             var result = file.createNewFile();
-            Logger.log("File created: " + result);
+            Logger.log("File created: " + result + " at " + dotenv.get("LOG_DIRECTORY_PATH") + "schedule.txt");
             return null;
         }
 
-        Scanner scanner = new Scanner(file);
+        return getScheduleFile(file);
+    }
+
+    static List<String> getScheduleFile(File scheduleFile) throws FileNotFoundException {
+        var scanner = new Scanner(scheduleFile);
 
         List<String> array = new ArrayList<>();
         while (scanner.hasNextLine()) {
@@ -160,6 +161,7 @@ public class Main {
             message.setContent(html.toString(), "text/html; charset=UTF-8");
 
             Transport.send(message);
+            Logger.log("Email sent successfully");
         } catch (MessagingException mex) {
             mex.printStackTrace();
         }

@@ -1,6 +1,6 @@
-.env
-schedule.txt
-log.txt
+src/.env
+src/schedule.txt
+src/log.txt
 workspace.xml
 
 ### IntelliJ IDEA ###

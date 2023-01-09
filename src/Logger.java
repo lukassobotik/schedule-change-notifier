@@ -3,7 +3,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Logger {
     public static void log(String message, boolean isErrorMessage) {
@@ -31,7 +30,7 @@ public class Logger {
                 list = new ArrayList<>();
             }
             list.add(message);
-            FileWriter fw = new FileWriter("log.txt");
+            FileWriter fw = new FileWriter(Main.dotenv.get("LOG_DIRECTORY_PATH") + "log.txt");
             for (var el : list) {
                 fw.write(el + "\n");
             }
@@ -42,21 +41,12 @@ public class Logger {
     }
 
     private static List<String> readFile() throws IOException, ClassNotFoundException {
-        var file = new File("log.txt");
+        var file = new File(Main.dotenv.get("LOG_DIRECTORY_PATH") + "log.txt");
         if (!file.exists()) {
             file.createNewFile();
             return null;
         }
 
-        var scanner = new Scanner(file);
-
-        List<String> lines = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            var line = scanner.nextLine();
-            lines.add(line);
-        }
-
-        scanner.close();
-        return lines;
+        return Main.getScheduleFile(file);
     }
 }
