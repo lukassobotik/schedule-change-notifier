@@ -1,7 +1,7 @@
 src/.env
 src/schedule.txt
 src/log.txt
-workspace.xml
+/.idea/workspace.xml
 
 ### IntelliJ IDEA ###
 out/

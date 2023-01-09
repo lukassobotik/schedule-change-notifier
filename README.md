@@ -31,6 +31,7 @@ If you want to run the script yourself, you can do so by following these steps:
 2. Create a file called `.env` in the src folder
 3. Add the following to the `.env` file:
 ```dotenv
+LOG_DIRECTORY_PATH=
 FROM_EMAIL=
 PASSWORD=
 POP_HOST=
@@ -41,8 +42,9 @@ SMTP_PORT=
 4. Fill in the values for the variables straight after the `=`:
 ##### For Example:
 ```dotenv
-FROM_EMAIL=your@email.com
+LOG_DIRECTORY_PATH=/home/user/logs
 ```
+- `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored
 - `FROM_EMAIL` - The email address you want to send the email from
 - `PASSWORD` - The password for the email address you want to send the email from
 - `POP_HOST` - The POP3 host
