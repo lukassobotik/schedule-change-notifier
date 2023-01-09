@@ -30,29 +30,34 @@ If you want to run the script yourself, you can do so by following these steps:
 1. Clone the repository
 2. Create a file called `.env` in the src folder
 3. Add the following to the `.env` file:
-```dotenv
-LOG_DIRECTORY_PATH=
-FROM_EMAIL=
-PASSWORD=
-POP_HOST=
-SMTP_HOST=
-POP_PORT=
-SMTP_PORT=
-```
-4. Fill in the values for the variables straight after the `=`:
-##### For Example:
-```dotenv
-LOG_DIRECTORY_PATH=/home/user/logs
-```
-- `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored
-- `FROM_EMAIL` - The email address you want to send the email from
-- `PASSWORD` - The password for the email address you want to send the email from
-- `POP_HOST` - The POP3 host
-- `SMTP_HOST` - The SMTP host
-- `POP_PORT` - The POP3 port
-- `SMTP_PORT` - The SMTP port
-5. Run the script
-6. _(Optional)_ If you want to, you can modify the script to be on any schedule from any website you want. But you will have to change the code to do so.
+    ```dotenv
+    LOG_DIRECTORY_PATH=
+    FROM_EMAIL=
+    PASSWORD=
+    POP_HOST=
+    SMTP_HOST=
+    POP_PORT=
+    SMTP_PORT=
+    ```
+4. Fill in the values for the variables straight after the `=`, for example:
+    ```dotenv
+    LOG_DIRECTORY_PATH=/home/user/logs
+    ```
+    - `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored
+    - `FROM_EMAIL` - The email address you want to send the email from
+    - `PASSWORD` - The password for the email address you want to send the email from
+    - `POP_HOST` - The POP3 host
+    - `SMTP_HOST` - The SMTP host
+    - `POP_PORT` - The POP3 port
+    - `SMTP_PORT` - The SMTP port
+5. Run the script and it should work. If it doesn't, check the logs in the directory you specified in the `.env` file. If it still doesn't work, create an issue on the [**GitHub repository**](https://github.com/PuckyEU/vsem-schedule-change-notifier/issues/new).
+6. If everything works, compile the script into a `.jar` file.
+7. If you want to run the script **automatically**, you can do so by using a **cron job**. If you don't know anything about cron jobs, I suggest reading [**this article**](https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/). I have the cron job set up like this:
+    ```cron
+    0 * * * * /usr/bin/java -jar /path/to/jar/vsem-schedule-change-notifier.jar
+    ```
+    This will run the script every hour.
+8. _(Optional)_ If you want to, you can modify the script to be on any schedule from any website you want. But you will have to change the code to do so.
 
 ## Licence
 MIT License
