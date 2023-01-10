@@ -206,18 +206,42 @@ public class Main {
             month = java.time.LocalDate.now().getMonth();
         }
         switch (month) {
-            case JANUARY -> s = "leden";
-            case FEBRUARY -> s = "unor";
-            case MARCH -> s = "brezen";
-            case APRIL -> s = "duben";
-            case MAY -> s = "kveten";
-            case JUNE -> s = "cerven";
-            case JULY -> s = "cervenec";
-            case AUGUST -> s = "srpen";
-            case SEPTEMBER -> s = "zari";
-            case OCTOBER -> s = "rijen";
-            case NOVEMBER -> s = "listopad";
-            case DECEMBER -> s = "prosinec";
+            case JANUARY:
+                s = "leden";
+                break;
+            case FEBRUARY:
+                s = "unor";
+                break;
+            case MARCH:
+                s = "brezen";
+                break;
+            case APRIL:
+                s = "duben";
+                break;
+            case MAY:
+                s = "kveten";
+                break;
+            case JUNE:
+                s = "cerven";
+                break;
+            case JULY:
+                s = "cervenec";
+                break;
+            case AUGUST:
+                s = "srpen";
+                break;
+            case SEPTEMBER:
+                s = "zari";
+                break;
+            case OCTOBER:
+                s = "rijen";
+                break;
+            case NOVEMBER:
+                s = "listopad";
+                break;
+            case DECEMBER:
+                s = "prosinec";
+                break;
         }
         return s;
     }
