@@ -13,7 +13,7 @@ public class Main {
     static List<String> HTMLTables = new ArrayList<>();
     static Set<String> recipients = new HashSet<>();
     static Dotenv dotenv = Dotenv.load();
-
+    static boolean isDebug = dotenv.get("DEBUG").equals("true");
     public static void main(String[] args) {
         List<String> oldData;
         try {
@@ -60,6 +60,7 @@ public class Main {
         for (var el : array) {
             fw.write(el + "\n");
         }
+        if (isDebug) Logger.log("Writing to file: " + array);
         fw.close();
     }
 
@@ -71,7 +72,9 @@ public class Main {
             return null;
         }
 
-        return getScheduleFile(file);
+        var array = getScheduleFile(file);
+        if (isDebug) Logger.log("Data from file: " + array);
+        return array;
     }
 
     static List<String> getScheduleFile(File scheduleFile) throws FileNotFoundException {
@@ -177,6 +180,7 @@ public class Main {
                 tables.add(headline.text());
                 HTMLTables.add(headline.html());
             }
+            if (isDebug) Logger.log("Fetched tables: " + tables);
         } catch (IOException e) {
             Logger.log("Error fetching data: " + e.getMessage(), true);
         }
