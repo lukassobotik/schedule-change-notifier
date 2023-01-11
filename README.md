@@ -7,16 +7,14 @@ The script will be running on a **server**, and the email will be sent to the em
 ## How to use
 The script will email the schedule to the email address you send the email from. So send the email from the email address you want to receive the schedule at. But don't worry, the script will not send any other emails to that address.
 
-[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service.
-
-[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `unsubscribe` to **unsubscribe** from the service.
+[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service or `unsubscribe` to **unsubscribe** from the service.
 
 
 ## How to run the script yourself
 If you want to run the script yourself, you can do so by following these steps:
 
 ### Prerequisites
-- [**JDK 19**](https://www.oracle.com/java/technologies/downloads/#jdk19-linux) or **higher**
+- [**JDK 11**](https://www.oracle.com/java/technologies/downloads/) or **higher**
 - Any **IDE** that supports **Java** (I recommend [**IntelliJ IDEA**](https://www.jetbrains.com/idea/download/))
 - Any [**SMTP**](https://www.javatpoint.com/simple-mail-transfer-protocol) server. I recommend [**Mailtrap**](https://mailtrap.io/) or [**SendGrid**](https://sendgrid.com/)
 
@@ -44,7 +42,7 @@ If you want to run the script yourself, you can do so by following these steps:
     ```dotenv
     LOG_DIRECTORY_PATH=/home/user/logs
     ```
-   - `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored
+   - `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored. Make sure the directory exists.
    - `DEBUG` is a boolean value, that determines whether the script will log debug messages. Set it to `true` or `false`. I recommend setting it to `false` when running the script on a server.
    - `FROM_EMAIL` - The email address you want to send the email from
    - `PASSWORD` - The password for the email address you want to send the email from
