@@ -2,6 +2,8 @@ src/.env
 src/schedule.txt
 src/log.txt
 .idea/*
+src/META-INF/*
+.idea/workspace.xml
 
 ### IntelliJ IDEA ###
 out/
