@@ -32,6 +32,7 @@ If you want to run the script yourself, you can do so by following these steps:
 3. Add the following to the `.env` file:
     ```dotenv
     LOG_DIRECTORY_PATH=
+    DEBUG=
     FROM_EMAIL=
     PASSWORD=
     POP_HOST=
@@ -43,20 +44,21 @@ If you want to run the script yourself, you can do so by following these steps:
     ```dotenv
     LOG_DIRECTORY_PATH=/home/user/logs
     ```
-    - `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored
-    - `FROM_EMAIL` - The email address you want to send the email from
-    - `PASSWORD` - The password for the email address you want to send the email from
-    - `POP_HOST` - The POP3 host
-    - `SMTP_HOST` - The SMTP host
-    - `POP_PORT` - The POP3 port
-    - `SMTP_PORT` - The SMTP port
+   - `LOG_DIRECTORY_PATH` is the path to the directory from root, where the logs will be stored
+   - `DEBUG` is a boolean value, that determines whether the script will log debug messages. Set it to `true` or `false`. I recommend setting it to `false` when running the script on a server.
+   - `FROM_EMAIL` - The email address you want to send the email from
+   - `PASSWORD` - The password for the email address you want to send the email from
+   - `POP_HOST` - The POP3 host
+   - `SMTP_HOST` - The SMTP host
+   - `POP_PORT` - The POP3 port
+   - `SMTP_PORT` - The SMTP port
 5. Run the script and it should work. If it doesn't, check the logs in the directory you specified in the `.env` file. If it still doesn't work, create an issue on the [**GitHub repository**](https://github.com/PuckyEU/vsem-schedule-change-notifier/issues/new).
-6. If everything works, compile the script into a `.jar` file.
+6. If everything works, compile the script into a `.jar` file. [**Here**](https://www.jetbrains.com/help/idea/compiling-applications.html) you can find documentation on how to do it in IntelliJ Idea. You can run the `.jar` file by running `java -jar <jar file name>` in the terminal.
 7. If you want to run the script **automatically**, you can do so by using a **cron job**. If you don't know anything about cron jobs, I suggest reading [**this article**](https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/). I have the cron job set up like this:
     ```cron
     0 * * * * /usr/bin/java -jar /path/to/jar/vsem-schedule-change-notifier.jar
     ```
-    This will run the script every hour.
+   This will run the script every hour.
 8. _(Optional)_ If you want to, you can modify the script to be on any schedule from any website you want. But you will have to change the code to do so.
 
 ## Licence
