@@ -13,7 +13,7 @@ public class Main {
     static List<String> HTMLTables = new ArrayList<>();
     static Set<String> recipients = new HashSet<>();
     static Dotenv dotenv = Dotenv.load();
-
+    static boolean isDebug = dotenv.get("DEBUG").equals("true");
     public static void main(String[] args) {
         List<String> oldData;
         try {
@@ -60,6 +60,7 @@ public class Main {
         for (var el : array) {
             fw.write(el + "\n");
         }
+        if (isDebug) Logger.log("Writing to file: " + array);
         fw.close();
     }
 
@@ -71,7 +72,9 @@ public class Main {
             return null;
         }
 
-        return getScheduleFile(file);
+        var array = getScheduleFile(file);
+        if (isDebug) Logger.log("Data from file: " + array);
+        return array;
     }
 
     static List<String> getScheduleFile(File scheduleFile) throws FileNotFoundException {
@@ -177,6 +180,7 @@ public class Main {
                 tables.add(headline.text());
                 HTMLTables.add(headline.html());
             }
+            if (isDebug) Logger.log("Fetched tables: " + tables);
         } catch (IOException e) {
             Logger.log("Error fetching data: " + e.getMessage(), true);
         }
@@ -206,18 +210,42 @@ public class Main {
             month = java.time.LocalDate.now().getMonth();
         }
         switch (month) {
-            case JANUARY -> s = "leden";
-            case FEBRUARY -> s = "unor";
-            case MARCH -> s = "brezen";
-            case APRIL -> s = "duben";
-            case MAY -> s = "kveten";
-            case JUNE -> s = "cerven";
-            case JULY -> s = "cervenec";
-            case AUGUST -> s = "srpen";
-            case SEPTEMBER -> s = "zari";
-            case OCTOBER -> s = "rijen";
-            case NOVEMBER -> s = "listopad";
-            case DECEMBER -> s = "prosinec";
+            case JANUARY:
+                s = "leden";
+                break;
+            case FEBRUARY:
+                s = "unor";
+                break;
+            case MARCH:
+                s = "brezen";
+                break;
+            case APRIL:
+                s = "duben";
+                break;
+            case MAY:
+                s = "kveten";
+                break;
+            case JUNE:
+                s = "cerven";
+                break;
+            case JULY:
+                s = "cervenec";
+                break;
+            case AUGUST:
+                s = "srpen";
+                break;
+            case SEPTEMBER:
+                s = "zari";
+                break;
+            case OCTOBER:
+                s = "rijen";
+                break;
+            case NOVEMBER:
+                s = "listopad";
+                break;
+            case DECEMBER:
+                s = "prosinec";
+                break;
         }
         return s;
     }
