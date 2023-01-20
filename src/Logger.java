@@ -8,7 +8,7 @@ public class Logger {
     public static void log(String message, boolean isErrorMessage) {
         if (isErrorMessage) {
             var date = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-            message = date + "           [ ERROR ]            " + message;
+            message = date + "            [ ERROR ]           " + message;
             System.out.println("\033[0;31m" + message + "\033[0m");
             saveToFile(message);
         } else {
@@ -18,7 +18,7 @@ public class Logger {
 
     public static void log(String message) {
         var date = java.time.LocalDateTime.now().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-        message = date + "           [ INFO ]             " + message;
+        message = date + "            [ INFO ]            " + message;
         System.out.println(message);
         saveToFile(message);
     }

@@ -25,6 +25,11 @@ public class Main {
         List<String> newData;
         newData = fetchData();
 
+        if (newData == null) {
+            Logger.log("Error while fetching data. Exiting...", true);
+            return;
+        }
+
         // Avoid the first run saying data changed
         if (Objects.equals(oldData, null)) {
             Logger.log("First run, no data to compare");
@@ -116,8 +121,13 @@ public class Main {
                 recipients.add(message.getFrom()[0].toString().split("<")[1].split(">")[0].trim());
             } else if (message.getSubject().trim().equalsIgnoreCase("unsubscribe")) {
                 recipients.remove(message.getFrom()[0].toString().split("<")[1].split(">")[0].trim());
+                message.setFlag(Flags.Flag.DELETED, true);
+            } else {
+                message.setFlag(Flags.Flag.DELETED, true);
             }
         }
+        session.getTransport().close();
+        store.close();
     }
 
     public static void sendEmail() throws IOException {
@@ -181,10 +191,11 @@ public class Main {
                 HTMLTables.add(headline.html());
             }
             if (isDebug) Logger.log("Fetched tables: " + tables);
+            return tables;
         } catch (IOException e) {
             Logger.log("Error fetching data: " + e.getMessage(), true);
+            return null;
         }
-        return tables;
     }
 
     // You may need to change this to match your page
