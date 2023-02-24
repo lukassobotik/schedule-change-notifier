@@ -199,65 +199,26 @@ public class Main {
     }
 
     // You may need to change this to match your page
-    // It checks if a page with the next month exists, if it does, it returns the url of that page, otherwise it returns the url of the current month
+    // It gets the schedule url from the list of schedule links on the website.
     public static String getUrl() {
-        var url = "https://www.akademievsem.cz/rozvrh-akademie-vsem-" + getMonth(true) + ".html";
+        var scheduleListUrl = "https://www.akademievsem.cz/evyhledavac-aakademie-vsem.html";
+        var baseUrl = "https://www.akademievsem.cz/";
+        var url = new StringBuilder();
 
         try {
-            Jsoup.connect(url).get();
+            final var doc = Jsoup.connect(scheduleListUrl).get();
+            // Gets the header (in this case an image) where the links are listed under
+            for(var element : doc.getElementsByAttributeValueMatching("src", "data/images/img-akademie/evyhledavac_rozvrh_ak.png")) {
+                var parent = element.parent();
+                var links = Objects.requireNonNull(parent).getElementsByAttribute("href");
+                var link = Objects.requireNonNull(links.last()).attr("href");
+                url.append(baseUrl).append(link);
+                if (isDebug) Logger.log("Fetching URL: " + url);
+            }
         } catch (IOException e) {
-            url = "https://www.akademievsem.cz/rozvrh-akademie-vsem-" + getMonth(false) + ".html";
+            Logger.log("Error getting the URL: " + e.getMessage(), true);
+            return null;
         }
-        return url;
-    }
-
-    // You may not need this if you don't have a page with the next month's schedule
-    public static String getMonth(boolean plusOne) {
-        var s = "";
-        Month month;
-        if (plusOne) {
-            month = java.time.LocalDate.now().plusMonths(1).getMonth();
-        } else {
-            month = java.time.LocalDate.now().getMonth();
-        }
-        switch (month) {
-            case JANUARY:
-                s = "leden";
-                break;
-            case FEBRUARY:
-                s = "unor";
-                break;
-            case MARCH:
-                s = "brezen";
-                break;
-            case APRIL:
-                s = "duben";
-                break;
-            case MAY:
-                s = "kveten";
-                break;
-            case JUNE:
-                s = "cerven";
-                break;
-            case JULY:
-                s = "cervenec";
-                break;
-            case AUGUST:
-                s = "srpen";
-                break;
-            case SEPTEMBER:
-                s = "zari";
-                break;
-            case OCTOBER:
-                s = "rijen";
-                break;
-            case NOVEMBER:
-                s = "listopad";
-                break;
-            case DECEMBER:
-                s = "prosinec";
-                break;
-        }
-        return s;
+        return url.toString();
     }
 }
