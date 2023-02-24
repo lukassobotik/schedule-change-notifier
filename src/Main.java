@@ -201,6 +201,8 @@ public class Main {
     // You may need to change this to match your page
     // It checks if a page with the next month exists, if it does, it returns the url of that page, otherwise it returns the url of the current month
     public static String getUrl() {
+        //Change this for a more fool-proof plan
+
         var url = "https://www.akademievsem.cz/rozvrh-akademie-vsem-" + getMonth(true) + ".html";
 
         try {
