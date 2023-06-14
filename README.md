@@ -1,5 +1,5 @@
-# VŠEM Schedule Change Notifier
-This is a **simple script** that notifies you when the **schedule changes** on the [**VŠEM website**](https://www.akademievsem.cz/).
+# Schedule Change Notifier
+This is a **simple script** that notifies you when the **schedule changes** on a website.
 Because of the schedule being changed **so often**, I decided to make a script that would notify **me or others** when the schedule **changes**.
 It checks every **hour** to see if the schedule has changed, and if it has, it **emails you**.
 The script will be running on a **server**, and the email will be sent to the email address **you send** the email to **subscribe** from.
@@ -50,7 +50,7 @@ If you want to run the script yourself, you can do so by following these steps:
    - `SMTP_HOST` - The SMTP host
    - `POP_PORT` - The POP3 port
    - `SMTP_PORT` - The SMTP port
-5. Run the script and it should work. If it doesn't, check the logs in the directory you specified in the `.env` file. If it still doesn't work, create an issue on the [**GitHub repository**](https://github.com/PuckyEU/vsem-schedule-change-notifier/issues/new).
+5. Run the script and it should work. If it doesn't, check the logs in the directory you specified in the `.env` file. If it still doesn't work, create an issue on the [**GitHub repository**](https://github.com/PuckyEU/schedule-change-notifier/issues/new).
 6. If everything works, compile the script into a `.jar` file. [**Here**](https://www.jetbrains.com/help/idea/compiling-applications.html) you can find documentation on how to do it in IntelliJ Idea. You can run the `.jar` file by running `java -jar <jar file name>` in the terminal.
 7. If you want to run the script **automatically**, you can do so by using a **cron job**. If you don't know anything about cron jobs, I suggest reading [**this article**](https://www.cyberciti.biz/faq/how-do-i-add-jobs-to-cron-under-linux-or-unix-oses/). I have the cron job set up like this:
     ```cron
