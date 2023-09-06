@@ -2,13 +2,21 @@
 This is a **simple script** that notifies you when the **schedule changes** on a website.
 Because of the schedule being changed **so often**, I decided to make a script that would notify **me or others** when the schedule **changes**.
 It checks every **hour** to see if the schedule has changed, and if it has, it **emails you**.
-The script will be running on a **server**, and the email will be sent to the email address **you send** the email to **subscribe** from.
+The script was running on a **server**, and the email was sent to the email address **you send** the email to **subscribe** from.
 
-## How to use
+<details>
+<summary>
+
+## [Discontinued] How to Use
+    
+</summary>
+
+**The Program is not running on a server anymore, so this step will not work.** If you want to use the program, you have to [run it yourself](#how-to-run-the-script-yourself).
+        
 The script will email the schedule to the email address you send the email from. So send the email from the email address you want to receive the schedule at. But don't worry, the script will not send any other emails to that address.
-
 [**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service or `unsubscribe` to **unsubscribe** from the service.
 
+</details>
 
 ## How to run the script yourself
 If you want to run the script yourself, you can do so by following these steps:
