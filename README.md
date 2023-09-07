@@ -4,20 +4,6 @@ Because of the schedule being changed **so often**, I decided to make a script t
 It checks every **hour** to see if the schedule has changed, and if it has, it **emails you**.
 The script was running on a **server**, and the email was sent to the email address **you send** the email to **subscribe** from.
 
-<details>
-<summary>
-
-## [Discontinued] How to Use
-    
-</summary>
-
-**The Program is not running on a server anymore, so this step will not work.** If you want to use the program, you have to [run it yourself](#how-to-run-the-script-yourself).
-        
-The script will email the schedule to the email address you send the email from. So send the email from the email address you want to receive the schedule at. But don't worry, the script will not send any other emails to that address.
-[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service or `unsubscribe` to **unsubscribe** from the service.
-
-</details>
-
 ## How to run the script yourself
 If you want to run the script yourself, you can do so by following these steps:
 
@@ -66,6 +52,21 @@ If you want to run the script yourself, you can do so by following these steps:
     ```
    This will run the script every hour.
 8. _(Optional)_ If you want to, you can modify the script to be on any schedule from any website you want. But you will have to change the code to do so.
+
+
+<details>
+<summary>
+
+## [Discontinued] How to Use
+    
+</summary>
+
+**The Program is not running on a server anymore, so this step will not work.** If you want to use the program, you have to [run it yourself](#how-to-run-the-script-yourself).
+        
+The script will email the schedule to the email address you send the email from. So send the email from the email address you want to receive the schedule at. But don't worry, the script will not send any other emails to that address.
+[**Send an Email**](mailto:info@vsemschedulechangenotifier.tech) to the email address `info@vsemschedulechangenotifier.tech` with the subject `subscribe` to **subscribe** to the service or `unsubscribe` to **unsubscribe** from the service.
+
+</details>
 
 ## Licence
 MIT License
